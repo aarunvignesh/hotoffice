@@ -1,0 +1,27 @@
+<!-- <div fxFlex fxLayout="row">
+<h4 fxFlex="30">Header is coming here</h4>
+
+<div fxFlex="70" fxLayout="row" fxLayoutAlign="end center">
+    <a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a>
+    <a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a>
+    <a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">Create Employees</a>
+    <a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">Create Teams</a>
+    <a fxFlex="20" *ngIf="!userData"  routerLink="/login" routerLinkActive="active">Login</a>
+    <a fxFlex="20" *ngIf="userData" (click)="logout();">Logout</a>
+</div>
+</div> -->
+
+
+<header>
+	<div fxFlex="30" class="brand">Logo</div>
+	<div fxFlex="70" fxLayout="row" fxLayoutAlign="end center">
+		<ul>
+		    <li><a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a></li>
+		    <li><a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a></li>
+		    <li><a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">Create Employees</a></li>
+		    <li><a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">Create Teams</a></li>
+		    <li><a fxFlex="20" *ngIf="!userData"  routerLink="/login" routerLinkActive="active">Login</a></li>
+		    <li><a fxFlex="20" *ngIf="userData" (click)="logout();">Logout</a></li>
+	    </ul>
+	</div>
+</header>

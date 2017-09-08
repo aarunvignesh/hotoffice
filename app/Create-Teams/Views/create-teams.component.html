@@ -1,0 +1,61 @@
+<div>
+  <div class="">
+    <div id="page1" *ngIf="(page==1)">
+      <div>
+        <h5>Create Team</h5>
+      </div>
+      <div>      
+        <md-form-field class="example-full-width">
+          <input [(ngModel)]="teamData.name" mdInput placeholder="Team Name">
+        </md-form-field>
+      </div>
+
+      <div> 
+        <md-form-field class="example-full-width">  
+          <textarea maxlength="110" rows="4" placeholder="Description" [(ngModel)]="teamData.description" mdInput></textarea>
+        </md-form-field>
+      </div>
+
+      <div>      
+        <md-select placeholder="Type" [(ngModel)]="teamData.type">
+          <md-option *ngFor="let type of ['agile','non-agile']" [value]="type">
+            {{type}}
+          </md-option>
+        </md-select>
+      </div>
+
+      <div>
+        <a href="javascript:void()" title="" (click)="nextPage();"><i class=""></i>Add team members</a>
+      </div>
+    </div>
+
+
+    <div id="page2" *ngIf="(page==2)">
+
+      <div>
+        <a href="javascript:void()" title="" (click)="prevPage();"><i class=""></i>Add team members</a>
+      </div>
+
+      <form>
+        <md-form-field class="example-full-width">
+          <input mdInput placeholder="Team Members" aria-label="Employees" [formControl]="teamMemberCtrl">
+        </md-form-field>
+      </form>
+      <div fxFlex>
+        <div fxFLex *ngFor="let employee of filteredEmployees | async" (click)="selectTeamMember(employee)">
+          <img style="vertical-align:middle;" aria-hidden src="{{'./users/image/'+ employee._id}}" height="25" />
+          <span>{{ employee.first_name+" " +employee.last_name }}</span> 
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="">
+    <button md-button color="primary" (click)="prevPage();" [disabled]="page==1">Cancel</button>
+    <div fxFlex></div>
+    <button md-button color="primary" (click)="submit();" *ngIf="(page==2)">Add</button>
+    <div fxFlex></div>
+    <button md-button color="primary" (click)="submit();" *ngIf="!(page==2)">Create</button>
+  </div>
+</div>

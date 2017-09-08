@@ -1,0 +1,155 @@
+html * {
+    font-family:'proxima nova', sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+}
+h1.giant {
+    font-size: 44px;
+    line-height: 1.27;
+}
+h1 {
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 1.29;
+}
+h2 {
+    font-size: 24px;
+    line-height: 1.33;
+}
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.2;
+}
+h4 {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 1.38;
+}
+h5 {
+    font-family: ProximaNova-Extrabld;
+    font-size: 14px;
+    line-height: 1.71;
+}
+p {
+    font-size: 14px;
+    line-height: 1.43;
+    margin: 0.5rem 0;
+}
+a {
+    color: #003359;
+    font-weight: normal;
+}
+a:hover {
+    color: #4c708b;
+}
+.box {
+    background-color: #003359;
+}
+.role {
+    font-size: 12px;
+    line-height: 1.33;
+}
+img {
+    max-width: 100%;
+}
+.card {
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 2px 20px 0 rgba(0,0,0,.075);
+    box-sizing: border-box;
+    float: left;
+    position: relative;
+    margin-bottom: 20px;
+}
+.login-card {
+    padding: 5rem 0 0;
+}
+.login-card .brand {
+    margin: 0 0 3rem;
+}
+.forgotton {
+    margin-bottom: 5rem;
+}
+.user-card img {
+    width: 100%;
+    clip-path: circle(20% at center 32%);
+    transition: clip-path 0.3s ease-in-out;
+    float: left;
+}
+.card-details {
+    width: 100%;
+    position: absolute;
+    bottom: 6%;
+    text-align: center;
+    transition: bottom 0.1s linear;
+}
+.action-icons {
+    padding: 10px 0 0;
+}
+.action-icons a {
+    color: #fff;
+    display: inline-block;
+    padding: 0 5px;
+}
+.user-card h4 {
+    text-transform: uppercase;
+    transition: color 0.3s linear;
+}
+.user-card:hover {
+    box-shadow: 0 15px 20px 0 rgba(0,0,0,.14);
+}
+.user-card:hover img {
+    transition: clip-path 0.3s ease-in-out;
+    clip-path: circle(100% at center);
+}
+.user-card:hover .card-details {
+    min-height: 72px;
+    bottom: 0;
+    transition: bottom 0.1s linear;
+}
+.user-card:hover h4 {
+    color: #fff;
+    transition: color 0.3s linear;
+}
+.user-card:hover .role {
+    display: none;
+}
+/*.team-card {
+
+}
+.team-avatars {
+}
+.clip-circle {
+    width: 32px;
+    height: 32px;
+    display: inline-block;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: .15em .25rem;
+    transition: all 0.3s linear;
+}
+.team-card:hover .clip-circle {
+    width: 48px;
+    height: 48px;
+    transition: all 0.3s linear;
+
+}*/
+
+/* OVER WRITING*/
+
+.mat-form-field,
+.mat-select {
+    width: 100%;
+}  
+
+
+
+/* THEME */
+
+body {}
+h1, h2, h3, h4, h5 {}
+a {}
+a:hover {}

@@ -1,0 +1,9 @@
+
+# Node JS
+node_modules
+
+# Build System
+build
+
+# Application Files
+settings.js

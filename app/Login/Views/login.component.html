@@ -1,0 +1,30 @@
+<div>
+    <div class="col-lg-6 col-lg-offset-3">
+        <div class="card login-card">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="center-xs brand">
+                    <img src="/images/wallstreetenglish-logo-blue.png" alt="Brand Logo">
+                </div>
+                <div>
+                    <md-form-field class="example-full-width">
+                        <input [(ngModel)]="username" mdInput placeholder="Employee Id">
+                    </md-form-field>
+                    <md-form-field class="example-full-width">
+                        <input mdInput [(ngModel)]="password" type="password" placeholder="Password">
+                    </md-form-field>
+                    <div class="center-xs">
+                        <button md-button (click)="signIn();">Log In</button>
+                    </div>
+                    <div class="forgotton center-xs">
+                        <a href="javascript:void(0);" title="Forgot Password">Forgotton your password?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="center-xs">
+                <div class="box">
+                    <button md-button (click)="not_member();">Not a Member</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
