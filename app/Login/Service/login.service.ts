@@ -34,7 +34,8 @@ export class loginService implements CanActivate {
 
             }
         },()=>{
-            self.userData = null;
+            self.inProgress = false;
+            self.setAuthData(null);
         });
     };
 
@@ -71,7 +72,8 @@ export class loginService implements CanActivate {
 
             }
         },()=>{
-            self.userData = null;
+            self.inProgress = false;
+            //self.setAuthData(null);
         });
     }
 
@@ -98,14 +100,13 @@ export class loginService implements CanActivate {
         }
     }
 
-    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+        var self = this;
         if(this.inProgress){
-            setTimeout(function(){
-                    this.canActivate(next, state);
-            }, 500)
+           return false;
         }
         else{
-           return this.allowAuth(next,state);
+           return this.allowAuth(next, state);
         }
     };
 
