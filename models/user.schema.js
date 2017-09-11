@@ -9,13 +9,14 @@ var employeeSchema = new mongoose.Schema({
     role: { type:String, required:true },
     designation: { type:String, required:true },
     profile_image: { type:String, required:true },
-    description: { type:String, required:true },
-    reporting_manager: { type:Object, required:true },
+    description: { type:String},
+    reporting_manager: { type:Object},
+    dateOfJoining: { type:Date, required: true },
     projects_worked: { type:Array, required:true },
     key_skills: { type: Object, required:true },
     skype: { type:String, required:true },
     slack: { type:String, required:true },
-    phone: { type: Number, required:true },
+    phone: { type: String, required:true },
     email: { type:String, required:true },
     password: {type: String, required: true, default:"Password123"}
 });

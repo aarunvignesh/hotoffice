@@ -17,7 +17,7 @@ export class createEmployeesComponent implements OnInit{
   cropperSettings:CropperSettings;
   imageReceiver:any;
   managerList: Array<any>;
-  project_list: Array<String> = ["GSE","NSE","CAD","UI/UX"];
+  project_list: Array<String> = ["GSE","CAD","UI/UX","Digital Classroom","Digital Classroom Mobile","COMPACT","CRANE","CAAP","Mental Chillout","Scheduling & Booking","Learning Services", "Teaching Services"];
 
   @ViewChild('cropper', undefined) cropper:ImageCropperComponent;
 
