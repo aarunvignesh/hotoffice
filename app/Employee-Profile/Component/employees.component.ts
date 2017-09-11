@@ -1,26 +1,21 @@
 import {Component , Input, ViewChild, OnInit} from "@angular/core";
 import * as moment from "moment";
 import { Http, Response } from '@angular/http';
-import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-    selector: 'open-office-employees',
+    selector: 'open-office-employees-profile',
     templateUrl:'./../Views/employees.component.html',
     styleUrls:['./../Styles/main.css']
 })
-export class employeesComponent implements OnInit{
+export class employeesComponentProfile implements OnInit{
  
  userData: Array<any>;
 
-  constructor(private http: Http, private router: Router){
+  constructor(private http: Http){
    
-  }
-
-  selected(user :any){
-    this.router.navigate(["employee-profile"],{queryParams:{id: user._id}});
-  }
+  };
 
   ngOnInit(){
     let self = this;
@@ -42,6 +37,6 @@ export class employeesComponent implements OnInit{
     },()=>{
       self.userData = [];
     })
- }
+ };
 
 }

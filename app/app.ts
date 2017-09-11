@@ -8,6 +8,9 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ImageCropperComponent} from 'ng2-img-cropper';
 
+import { employeesComponentProfile } from './Employee-Profile/Component/employees.component';
+import { teamProfileComponent } from './Team-Profile/Component/team.component';
+
 
 // import { homeComponent } from "./Home/Component/home.component";
 import { AppComponent } from "./Core/Component/App.component";
@@ -42,6 +45,14 @@ const Route: Routes = [
         canActivate:[loginService]
     },
     {
+        path:'employee-profile',
+        component: employeesComponentProfile
+    },
+    {
+        path:'team-profile',
+        component: teamProfileComponent
+    },
+    {
         path:'login',
         component: loginComponent,
         canActivate:[loginService]
@@ -74,6 +85,8 @@ const Route: Routes = [
         loginComponent,
         AppComponent,
         ImageCropperComponent,
+        teamProfileComponent,
+        employeesComponentProfile,
         HeaderComponent
     ],
     providers:[

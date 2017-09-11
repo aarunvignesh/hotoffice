@@ -1,27 +1,22 @@
 import {Component , Input, ViewChild, OnInit} from "@angular/core";
 import * as moment from "moment";
-import { Router } from '@angular/router';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
 
 @Component({
-    selector: 'openp-office-teams',
+    selector: 'open-office-team-profile',
     templateUrl:'./../Views/team.component.html',
     styleUrls:['./../Styles/main.css']
 })
-export class teamComponent implements OnInit{
+export class teamProfileComponent implements OnInit{
  	
  teamData: Array<any>;	 
  
-  constructor(private http: Http, private router: Router){
+constructor(private http: Http){
    
-  }
+}
 
-
-  selected(team :any){
-    this.router.navigate(["team-profile"],{queryParams:{id: team._id}});
-  }
 
 ngOnInit(){
     let self = this;
@@ -42,7 +37,7 @@ ngOnInit(){
         }
     },()=>{
       self.teamData = [];
-    })
+    });
   }
 
 }
