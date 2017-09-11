@@ -32,10 +32,10 @@ export class createEmployeesComponent implements OnInit{
       required:["email","slack","skype","phone"]
     },
     page4:{
-      required:["team_details","projects_worked","reporting_manager"]
+      required:["team_details","projects_worked"]
     },
     page5:{
-      required:["current_projects","projects_worked","reporting_manager"]
+      required:["current_projects","projects_worked"]
     }
   }
 
