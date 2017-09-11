@@ -12,7 +12,7 @@ export class loginService implements CanActivate {
     isAuthenticated: Boolean;
     userData: any;
     announceSignIn: EventEmitter<any> = new EventEmitter();
-
+    inProgress:Boolean;
     rolesAllowedOnlyForAdmin : Array<String> = ["/create-teams"];
 
     constructor(private http: Http, private router: Router) {
@@ -21,7 +21,9 @@ export class loginService implements CanActivate {
 
     checkStatus(){
         let self = this;
+        self.inProgress = true;
         this.http.get("/status").toPromise().then((response: any)=>{
+            self.inProgress = false;
             try{
                 var data = JSON.parse(response._body);
                 if(data.code == 200 && data.user){
@@ -56,7 +58,9 @@ export class loginService implements CanActivate {
 
     logout(){
         var self = this;
+        self.inProgress = true;
         this.http.get("/logout").toPromise().then((response: any)=>{
+            self.inProgress = false;
             try{
                 var data = JSON.parse(response._body);
                 if(data.code == 200){
@@ -71,7 +75,8 @@ export class loginService implements CanActivate {
         });
     }
 
-    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+
+    allowAuth(next: ActivatedRouteSnapshot, state: RouterStateSnapshot){
         if(this.userData){
             if(this.userData.role == "admin" && state.url != "/login"){
                 return true;
@@ -90,6 +95,17 @@ export class loginService implements CanActivate {
             else{
                 this.router.navigate(['login']);
             }
+        }
+    }
+
+    canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+        if(this.inProgress){
+            setTimeout(function(){
+                    this.canActivate(next, state);
+            }, 500)
+        }
+        else{
+           return this.allowAuth(next,state);
         }
     };
 
