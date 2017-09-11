@@ -5,6 +5,7 @@ var express = require("express"),
     routes = require("./Routes"),
     mongoose = require("mongoose"),
     path = require("path"),
+    settings = require("./settings"), 
     body = require("body-parser");
 
 app.use(body.urlencoded({extended: true}));
@@ -29,7 +30,11 @@ app.use(session({
 
 app.use(routes);
 
-mongoose.connect('mongodb://10.98.181.73:27017/EmployeeDB')
+function dbUrlformatter(db){
+    return "mongodb://"+db.username + ":" + db.password +"@"+db.url+":"+db.port+"/"+db.database;
+}
+
+mongoose.connect(dbUrlformatter(settings.db))
 
 var dbConnection = mongoose.connection;
 
