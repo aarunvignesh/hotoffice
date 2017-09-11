@@ -1,6 +1,27 @@
-<span *ngIf="!noDataAvailable">
-{{userData | json}}
-</span>
-<span *ngIf="noDataAvailable">
+<div class="profile" *ngIf="!noDataAvailable && userData">
+    <div class="row">
+<!-- {{userData | json}} -->
+        <div class="col-md-3 col-lg-3">
+            <div>
+                <figure class="">
+                    <img src="{{'./users/image/'+ userData._id}}" />
+                </figure>
+            </div>
+        </div>
+        <div class="col-md-9 col-lg-9">
+            <div>
+                <h1 [innerHtml]="userData.first_name + ' ' + userData.last_name"></h1>
+                <span [innerHtml]="userData.designation"></span>
+            </div>
+            <div>
+                <figure class="clip-circle">
+                    <img src="{{'./users/image/'+ userData.reporting_manager._id}}" />
+                </figure>
+                <span>Reporting To:</span>
+            </div>
+        </div>
+    </div>
+</div>
+<div *ngIf="noDataAvailable">
    Data Not Available
-</span>
+</div>

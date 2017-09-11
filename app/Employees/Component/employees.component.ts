@@ -18,6 +18,10 @@ export class employeesComponent implements OnInit{
    
   }
 
+  createEmployees(){
+    this.router.navigate(["create-employees"]);
+  }
+
   selected(user :any){
     this.router.navigate(["employee-profile"],{queryParams:{id: user._id}});
   }

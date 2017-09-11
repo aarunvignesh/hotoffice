@@ -13,15 +13,15 @@
 
 
 <header *ngIf="hideHeader">
-	<div fxFlex="30" class="brand">Logo</div>
+	<div fxFlex="30" class="brand"><a href="/"><img src="/images/wallstreetenglish-logo-white.png" alt="Open Office"></a></div>
 	<div fxFlex="70" fxLayout="row" fxLayoutAlign="end center">
-		<ul>
-		    <li><a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a></li>
-		    <li><a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a></li>
-		    <li><a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">Create Employees</a></li>
-		    <li><a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">Create Teams</a></li>
+		<ul fxLayout="row">
+		    <!-- <li><a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a></li>
+		    <li><a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a></li> -->
+		    <!-- <li><a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">+Employees</a></li> -->
+		    <!-- <li><a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">+Teams</a></li> -->
 		    <li><a fxFlex="20" *ngIf="!userData"  routerLink="/login" routerLinkActive="active">Login</a></li>
-		    <li><a fxFlex="20" *ngIf="userData" (click)="logout();">Logout</a></li>
+		    <li><a fxFlex="20" href="javascript:void(0)" *ngIf="userData" (click)="logout();">Logout</a></li>
 	    </ul>
 	</div>
 </header>

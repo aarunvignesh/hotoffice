@@ -1,9 +1,9 @@
-<div fxFlexFill fxLayout="column">
-<div fxFlex="70" fxLayout="column">
-  <div fxFlex id="page1" [hidden]="!(page==1)">
+<div>
+<div>
+  <div id="page1" [hidden]="!(page==1)">
       <img-cropper [image]="imageReceiver" [settings]="cropperSettings" (onCrop)="cropped($event)"></img-cropper>
   </div>
-  <div fxFlex id="page2" [hidden]="!(page==2)">
+  <div id="page2" [hidden]="!(page==2)">
         <div>      
             <md-form-field class="example-full-width">
                 <input [(ngModel)]="userData.emp_id" mdInput placeholder="Employee Id">
