@@ -43,7 +43,7 @@ export class loginService implements CanActivate {
         this.userData = userObject;
         this.announceSignIn.emit(this.userData);
         if(userObject){
-            this.router.navigate(['employees']);
+            this.router.navigate(['teams']);
         }
         else{
             this.router.navigate(['login']);
@@ -87,7 +87,7 @@ export class loginService implements CanActivate {
                 return true;
             }
             else{
-                this.router.navigate(['employees']);
+                this.router.navigate(['teams']);
             }
         }
         else{

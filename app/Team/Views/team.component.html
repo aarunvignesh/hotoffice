@@ -1,5 +1,12 @@
-<div (click)="selected(team)" *ngFor="let team of teamData" style="cursor:pointer;">
+
+  <div class="row">
+<div class="col-lg-4" (click)="selected(team)" *ngFor="let team of teamData">
+      <div class="card">
+    <div >
   <h2>{{team.name}}</h2>
+  <div>
+    <p>{{team.description}}</p>
+  </div>
   <div>
     <p>{{team_details}}</p>
   </div>
@@ -9,6 +16,8 @@
     </div>
   </div>
 </div>
+</div>
+</div></div>
 
   <!--<div class="row">
   <div class="col-md-6">-->

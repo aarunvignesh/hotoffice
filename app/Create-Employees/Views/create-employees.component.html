@@ -1,100 +1,111 @@
 <div>
-<div>
-  <div id="page1" [hidden]="!(page==1)">
-      <img-cropper [image]="imageReceiver" [settings]="cropperSettings" (onCrop)="cropped($event)"></img-cropper>
-  </div>
-  <div id="page2" [hidden]="!(page==2)">
-        <div>      
-            <md-form-field class="example-full-width">
-                <input [(ngModel)]="userData.emp_id" mdInput placeholder="Employee Id">
-            </md-form-field>
+    <div class="">
+        <div class="col-lg-6 col-lg-offset-3">
+            <div id="page1" [hidden]="!(page==1)">
+                <img-cropper [image]="imageReceiver" [settings]="cropperSettings" (onCrop)="cropped($event)"></img-cropper>
+            </div>
+            <div id="page2" [hidden]="!(page==2)">
+                <div>      
+                    <md-form-field class="example-full-width">
+                        <input [(ngModel)]="userData.emp_id" mdInput placeholder="Employee Id">
+                    </md-form-field>
+                </div>
+                <div> 
+                    <md-form-field class="example-full-width">
+                        <input mdInput [(ngModel)]="userData.first_name" placeholder="First Name">
+                    </md-form-field>
+                </div>
+                <div>  
+                    <md-form-field class="example-full-width">
+                        <input [(ngModel)]="userData.last_name" mdInput placeholder="Last Name">
+                    </md-form-field>
+                </div> 
+            </div>
+        <div fxFlex id="page3" [hidden]="!(page==3)">
+            <div> 
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="userData.email" placeholder="Email">
+                </md-form-field>
+            </div>
+            <div>  
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="userData.slack" placeholder="Slack">
+                </md-form-field>
+            </div>
+            <div>
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="userData.skype" placeholder="Skype">
+                </md-form-field>
+            </div>
+            <div>  
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="userData.phone" placeholder="Phone">
+                </md-form-field>
+            </div> 
         </div>
-        <div> 
-            <md-form-field class="example-full-width">
-                <input mdInput [(ngModel)]="userData.first_name" placeholder="First Name">
-            </md-form-field>
+        <div fxFlex id="page4" [hidden]="!(page==4)">
+            <div> 
+                <md-select placeholder="Current Projects" [(ngModel)]="userData.team_details" multiple>
+                    <md-option *ngFor="let project of project_list" [value]="project">
+                    {{project}}
+                    </md-option>
+                </md-select>
+            </div>
+            <div>  
+                <md-select placeholder="Projects Worked" [(ngModel)]="userData.projects_worked" multiple>
+                    <md-option *ngFor="let project of project_list" [value]="project">
+                    {{project}}
+                    </md-option>
+                </md-select>
+            </div>
+            <div>
+                <md-form-field>
+                    <input mdInput [mdDatepicker]="picker" [(ngModel)]="userData.dateOfJoining" placeholder="Choose a date">
+                    <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
+                    <md-datepicker #picker></md-datepicker>
+                </md-form-field>
+            </div>
+            <div>  
+                <md-select placeholder="Reporting Manager" [(ngModel)]="userData.reporting_manager">
+                    <md-option *ngFor="let manager of managerList" [value]="manager">
+                    {{manager.displayName}}
+                    </md-option>
+                </md-select>
+            </div> 
         </div>
-        <div>  
-            <md-form-field class="example-full-width">
-                <input [(ngModel)]="userData.last_name" mdInput placeholder="Last Name">
-            </md-form-field>
-        </div> 
-  </div>
-  <div fxFlex id="page3" [hidden]="!(page==3)">
-    <div> 
-      <md-form-field class="example-full-width">
-          <input mdInput [(ngModel)]="userData.email" placeholder="Email">
-      </md-form-field>
+        <div fxFlex id="page5" [hidden]="!(page==5)">
+            <div> 
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="userData.key_skills" placeholder="Key Skills">
+                </md-form-field>
+            </div>
+            <div>  
+                <md-form-field class="example-full-width">
+                    <input mdInput [(ngModel)]="userData.description" placeholder="Description">
+                </md-form-field>
+            </div>
+            <div>  
+                <md-select placeholder="Designation" [(ngModel)]="userData.designation">
+                    <md-option *ngFor="let designation of ['Engineer','Manager']" [value]="designation">
+                    {{designation}}
+                    </md-option>
+                </md-select>
+            </div>
+            <div>  
+                <md-select placeholder="Role" [(ngModel)]="userData.role">
+                    <md-option *ngFor="let role of ['admin','employee']" [value]="role">
+                    {{role}}
+                    </md-option>
+                </md-select>
+            </div> 
+        </div>
     </div>
-    <div>  
-      <md-form-field class="example-full-width">
-        <input mdInput [(ngModel)]="userData.slack" placeholder="Slack">
-        </md-form-field>
-        <md-form-field class="example-full-width">
-        <input mdInput [(ngModel)]="userData.skype" placeholder="Skype">
-      </md-form-field>
+    <div fxFlex="30" fxLayout="row">
+        <button md-button color="primary" (click)="prevPage();" [disabled]="page==1">Previous</button>
+        <div fxFlex></div>
+        <button md-button color="primary" (click)="submit();" *ngIf="(page==5)">Submit</button>
+        <div fxFlex></div>
+            <button md-button color="primary" (click)="nextPage();" [disabled]="validationForNext(page)">Next</button>
+        </div>
     </div>
-    <div>  
-      <md-form-field class="example-full-width">
-          <input mdInput [(ngModel)]="userData.phone" placeholder="Phone">
-      </md-form-field>
-    </div> 
-  </div>
-  <div fxFlex id="page4" [hidden]="!(page==4)">
-    <div> 
-        <md-select placeholder="Current Projects" [(ngModel)]="userData.team_details" multiple>
-            <md-option *ngFor="let project of project_list" [value]="project">
-                {{project}}
-            </md-option>
-        </md-select>
-    </div>
-    <div>  
-        <md-select placeholder="Projects Worked" [(ngModel)]="userData.projects_worked" multiple>
-            <md-option *ngFor="let project of project_list" [value]="project">
-                {{project}}
-            </md-option>
-        </md-select>
-    </div>
-    <div>  
-        <md-select placeholder="Reporting Manager" [(ngModel)]="userData.reporting_manager">
-            <md-option *ngFor="let manager of managerList" [value]="manager">
-                {{manager.displayName}}
-            </md-option>
-        </md-select>
-    </div> 
-  </div>
-  <div fxFlex id="page5" [hidden]="!(page==5)">
-    <div> 
-        <md-form-field class="example-full-width">
-        <input mdInput [(ngModel)]="userData.key_skills" placeholder="Key Skills">
-        </md-form-field>
-    </div>
-    <div>  
-        <md-form-field class="example-full-width">
-        <input mdInput [(ngModel)]="userData.description" placeholder="Description">
-      </md-form-field>
-    </div>
-    <div>  
-      <md-select placeholder="Designation" [(ngModel)]="userData.designation">
-            <md-option *ngFor="let designation of ['Engineer','Manager']" [value]="designation">
-                {{designation}}
-            </md-option>
-      </md-select>
-    </div>
-    <div>  
-      <md-select placeholder="Role" [(ngModel)]="userData.role">
-            <md-option *ngFor="let role of ['admin','employee']" [value]="role">
-                {{role}}
-            </md-option>
-      </md-select>
-    </div> 
-  </div>
-</div>
-<div fxFlex="30" fxLayout="row">
-    <button md-button color="primary" (click)="prevPage();" [disabled]="page==1">Previous</button>
-    <div fxFlex></div>
-    <button md-button color="primary" (click)="submit();" *ngIf="(page==5)">Submit</button>
-    <div fxFlex></div>
-    <button md-button color="primary" (click)="nextPage();" [disabled]="validationForNext(page)">Next</button>
-</div>
 </div>

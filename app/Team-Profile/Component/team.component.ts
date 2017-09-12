@@ -31,8 +31,8 @@ ngOnInit(){
           let data = JSON.parse(response._body);
           if(data.length > 0){
             self.teamData = data;
-            self.agileTeam.filter((value: any) => value.type == "agile");
-            self.functionalTeam.filter((value: any) => value.type == "non-agile");
+            self.agileTeam.filter((value: any) => value.type == "Agile");
+            self.functionalTeam.filter((value: any) => value.type == "Funtional");
           }
           else{
             self.teamData = [];

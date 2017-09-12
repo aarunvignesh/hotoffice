@@ -14,7 +14,7 @@ export class employeesComponentProfile implements OnInit{
  
   userData: Object;
   noDataAvailable: Boolean;
-  constructor(private http: Http, private activatedRoute :ActivatedRoute){
+  constructor(private http: Http, private activatedRoute :ActivatedRoute, private route: Router){
     this.noDataAvailable = false;
   };
 
@@ -42,5 +42,9 @@ export class employeesComponentProfile implements OnInit{
         this.noDataAvailable = true;
     }
  };
+
+prevPage() {
+  this.route.navigate(['employees']);
+}
 
 }
