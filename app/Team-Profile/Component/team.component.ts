@@ -15,7 +15,8 @@ export class teamProfileComponent implements OnInit{
  teamData: Array<any> = [];	 
  agileTeam: Array<any> = [];
  functionalTeam: Array<any> = [];
- 
+ teamProfile: any = {};
+
 constructor(private http: Http, private activatedRoute :ActivatedRoute){
    
 }
@@ -23,7 +24,7 @@ constructor(private http: Http, private activatedRoute :ActivatedRoute){
 
 ngOnInit(){
     let self = this;
-    let team = this.activatedRoute.snapshot.queryParams["id"];
+    let team_id = this.activatedRoute.snapshot.queryParams["id"];
     this.http.get("/teams/data")
     .toPromise()
     .then((response:any)=>{
@@ -33,6 +34,7 @@ ngOnInit(){
             self.teamData = data;
             self.agileTeam.filter((value: any) => value.type == "Agile");
             self.functionalTeam.filter((value: any) => value.type == "Funtional");
+            self.teamProfile = self.teamData[self.teamData.findIndex((val) => val._id == team_id)];
           }
           else{
             self.teamData = [];

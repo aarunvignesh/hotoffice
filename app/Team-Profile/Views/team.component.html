@@ -1,5 +1,11 @@
-<h1> Team Profile </h1>
+<h1>{{teamProfile.name}}</h1>
+<h1>{{teamProfile.description}}</h1>
 
+<div *ngFor="let team_members of teamProfile.team_members">
+  <img src="{{'./users/image/'+ team_members._id}}" width="50" height="50"/>
+  <h4>{{team_members.first_name + ' '+ team_members.last_name}}</h4>
+  <h4>{{team_members.designation}}</h4>
+</div>
 
   <!--<div class="row">
   <div class="col-md-6">-->
