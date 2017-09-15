@@ -1,27 +1,47 @@
-<!-- <div fxFlex fxLayout="row">
-<h4 fxFlex="30">Header is coming here</h4>
-
-<div fxFlex="70" fxLayout="row" fxLayoutAlign="end center">
-    <a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a>
-    <a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a>
-    <a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">Create Employees</a>
-    <a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">Create Teams</a>
-    <a fxFlex="20" *ngIf="!userData"  routerLink="/login" routerLinkActive="active">Login</a>
-    <a fxFlex="20" *ngIf="userData" (click)="logout();">Logout</a>
-</div>
-</div> -->
-
-
 <header *ngIf="hideHeader">
-	<div fxFlex="30" class="brand"><a href="/"><img src="/images/wallstreetenglish-logo-white.png" alt="Open Office"></a></div>
-	<div fxFlex="70" fxLayout="row" fxLayoutAlign="end center">
-		<ul fxLayout="row">
-		    <!-- <li><a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a></li> -->
-		    <li><a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a></li> 
-		    <!-- <li><a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">+Employees</a></li> -->
-		    <li><a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">+Teams</a></li>
-		    <li><a fxFlex="20" *ngIf="!userData"  routerLink="/login" routerLinkActive="active">Login</a></li>
-		    <li><a fxFlex="20" href="javascript:void(0)" *ngIf="userData" (click)="logout();">Logout</a></li>
-	    </ul>
+	<div class="wrap">
+		<div class="container-fluid middle-lg">
+			<div fxFlex="30" class="brand"><a href="/"><img class="logo" src="/images/wallstreetenglish-logo-white.png" alt="Open Office"></a></div>
+			<div fxFlex="70" fxLayout="row" fxLayoutAlign="end center">
+				<ul fxLayout="row">
+					<!-- <li><a fxFlex="20" routerLink="/employees" routerLinkActive="active">Employees</a></li> -->
+					<!-- <li><a fxFlex="20" routerLink="/teams" routerLinkActive="active">Teams</a></li>  -->
+					<!-- <li><a fxFlex="20" *ngIf="userData" routerLink="/create-employees" routerLinkActive="active">+Employees</a></li> -->
+					<!-- <li><a fxFlex="20" *ngIf="userData && userData.role == 'admin'" routerLink="/create-teams" routerLinkActive="active">+Teams</a></li> -->
+					<li><a *ngIf="!userData"  routerLink="/login" routerLinkActive="active">Login</a></li>
+					<li class="profile" [mdMenuTriggerFor]="menu"><img src="{{'./users/image/'+ userData._id}}" class="clip-circle"/></li>
+					<!-- <li class="profile" [mdMenuTriggerFor]="menu"><i class="material-icons">person</i></li> -->
+					<!-- <li><a href="javascript:void(0)" *ngIf="userData" (click)="logout();"><i class="material-icons">exit_to_app</i> Logout</a></li> -->
+				</ul>
+			</div>
+		</div>
 	</div>
 </header>
+
+<div class="wrap">
+	<div class="container-fluid">
+		<div class="main-menu" [hidden]="hideRouteForTeams">
+			<ul>
+				<li><a routerLink="/teams" routerLinkActive="active">Teams</a></li>
+				<li><a routerLink="/employees" routerLinkActive="active">Employees</a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+
+<!-- user menu -->
+<md-menu #menu="mdMenu" class="top-space">
+	<button md-menu-item (click)="gotoProfile();">
+		<md-icon>person</md-icon>
+		<span>My Profile</span>
+	</button>
+	<button md-menu-item disabled>
+		<md-icon>settings</md-icon>
+		<span>Other Settings</span>
+	</button>
+	<button md-menu-item (click)="logout();">
+		<md-icon>exit_to_app</md-icon>
+		<span>Logout</span>
+	</button>
+</md-menu>

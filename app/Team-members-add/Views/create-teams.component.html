@@ -1,0 +1,29 @@
+<div class="creation">
+    <div class="row">
+      <div class="col-lg-6 col-lg-offset-3">
+      <div id="page2" class="sections">
+        <div>
+          <h3>Add team members</h3>
+        </div>
+        <form class="space-top">
+          <md-form-field class="example-full-width">
+            <input mdInput placeholder="Team Members" aria-label="Employees" [formControl]="teamMemberCtrl">
+          </md-form-field>
+        </form>
+        <div  class="search-list">
+          <div fxFLex *ngFor="let employee of filteredEmployees | async" (click)="selectTeamMember(employee)">
+            <img style="vertical-align:middle;" aria-hidden src="{{'./users/image/'+ employee._id}}" height="25" />
+            <span>{{ employee.first_name+" " +employee.last_name }}</span> 
+          </div>
+          <div flFlex="20" fxLayout="row" fxLayoutAlign="end center">
+              <i class="material-icons">add_circle</i>
+          </div>
+        </div>
+      </div>
+      <div class="action-buttons" fxLayout="row" fxLayoutAlign="end center">
+        <button md-button color="primary" (click)="gotoTeams();">Cancel</button>
+        <button md-button color="primary" (click)="submit();">Create</button>
+      </div>
+    </div>
+  </div>
+</div>

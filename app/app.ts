@@ -20,6 +20,7 @@ import { employeesComponent } from "./Employees/Component/employees.component";
 import { teamComponent } from "./Team/Component/team.component";
 import { createEmployeesComponent } from "./Create-Employees/Component/create-employees.component";
 import { createTeamComponent } from "./Create-Teams/Component/create-teams.component";
+import { addMembersComponent } from "./Team-members-add/Component/create-teams.component";
 
 import { loginComponent } from "./Login/Component/login.component";
 import { httpService } from "./Core/Services/http.service";
@@ -58,6 +59,11 @@ const Route: Routes = [
         canActivate:[loginService]
     },
     {
+        path:'add-team-members',
+        component: addMembersComponent,
+        canActivate:[loginService]
+    },
+    {
         path:'',
         redirectTo:'/login',
         pathMatch: 'full'
@@ -87,6 +93,7 @@ const Route: Routes = [
         ImageCropperComponent,
         teamProfileComponent,
         employeesComponentProfile,
+        addMembersComponent,
         HeaderComponent
     ],
     providers:[

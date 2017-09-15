@@ -1,6 +1,7 @@
 import {Component , Input, ViewChild, OnInit} from "@angular/core";
 import * as moment from "moment";
-import { Http, Response } from '@angular/http'
+import { Http, Response } from '@angular/http';
+import { Router } from "@angular/router"
 import {ImageCropperComponent, CropperSettings, Bounds} from 'ng2-img-cropper';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -35,11 +36,11 @@ export class createEmployeesComponent implements OnInit{
       required:["team_details","projects_worked"]
     },
     page5:{
-      required:["current_projects","projects_worked"]
+      required:["key_skills","description", "designation"]
     }
   }
 
-  constructor(private http: Http){
+  constructor(private http: Http, private router: Router){
     this.cropperSettings = new CropperSettings();
     this.cropperSettings.width = 200;
     this.cropperSettings.height = 200;
@@ -91,7 +92,7 @@ export class createEmployeesComponent implements OnInit{
     .then((response:any)=>{
         try{
           let data = JSON.parse(response._body);
-          alert(data.message);
+          this.router.navigate(["employees"]);
         }  
         catch(e){
           alert("Something Went Wrong!");
@@ -131,5 +132,9 @@ export class createEmployeesComponent implements OnInit{
 
   prevPage(){
     this.page -= 1;
+  }
+
+  gotoEmployees(){
+    this.router.navigate(["employees"]);
   }
 }

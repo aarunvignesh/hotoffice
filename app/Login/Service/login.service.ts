@@ -50,7 +50,7 @@ export class loginService implements CanActivate {
         }
     }
 
-    getAuthData(userObject:any){
+    getAuthData(){
         if(this.userData)
         return this.userData;
         else

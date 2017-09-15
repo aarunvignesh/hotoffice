@@ -1,7 +1,7 @@
-<div>
+<div class="creation">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-      <div id="page1" *ngIf="(page==1)">
+      <div id="page1" *ngIf="(page==1)" class="sections">
         <div>
           <h3>Create Team</h3>
         </div>
@@ -12,7 +12,7 @@
         </div>
         <div> 
           <md-form-field class="example-full-width">  
-            <textarea maxlength="110" rows="4" placeholder="Description" [(ngModel)]="teamData.description" mdInput></textarea>
+            <textarea maxlength="240" rows="4" placeholder="Description" [(ngModel)]="teamData.description" mdInput></textarea>
           </md-form-field>
         </div>
         <div>      
@@ -22,32 +22,34 @@
             </md-option>
           </md-select>
         </div>
-        <div>
+        <div class="more-space-top">
           <a href="javascript:void()" title="" (click)="nextPage();"><i class=""></i>Add team members</a>
         </div>
       </div>
-      <div id="page2" *ngIf="(page==2)">
+      <div id="page2" *ngIf="(page==2)" class="sections">
         <div>
-          <a href="javascript:void()" title="" (click)="prevPage();"><i class=""></i>Add team members</a>
+          <a href="javascript:void()" title="" (click)="prevPage();"><i class="material-icons" md-18>chevron_left</i> Add team members</a>
         </div>
-        <form>
+        <form class="space-top">
           <md-form-field class="example-full-width">
             <input mdInput placeholder="Team Members" aria-label="Employees" [formControl]="teamMemberCtrl">
           </md-form-field>
         </form>
-        <div fxFlex>
-          <div fxFLex *ngFor="let employee of filteredEmployees | async" (click)="selectTeamMember(employee)">
-            <img style="vertical-align:middle;" aria-hidden src="{{'./users/image/'+ employee._id}}" height="25" />
-            <span>{{ employee.first_name+" " +employee.last_name }}</span> 
+        <div class="search-list">
+          <div *ngFor="let employee of filteredEmployees | async"  [ngClass]="{'selected': selectedEmployees(employee)}" (click)="selectTeamMember(employee)">
+            <div fxFlex>
+              <img style="vertical-align:middle;" aria-hidden src="{{'./users/image/'+ employee._id}}"  />
+              <span>{{ employee.first_name+" " +employee.last_name }}</span>
+            </div>
+            <div flFlex="20" fxLayout="row" fxLayoutAlign="end center">
+                <i class="material-icons">{{ selectedEmployees(employee) ? 'check_circle' : 'add_circle' }}</i>
+            </div>
           </div>
         </div>
       </div>
-      <div class="">
-        <button md-button color="primary" (click)="prevPage();">Cancel</button>
-        <div fxFlex></div>
-        <button md-button color="primary" (click)="submit();" *ngIf="(page==2)">Add</button>
-        <div fxFlex></div>
-        <button md-button color="primary" (click)="submit();" *ngIf="(page==1)">Create</button>
+      <div class="action-buttons" fxLayout="row" fxLayoutAlign="end center">
+        <button md-button class="wse-button secondary" *ngIf="page==1" (click)="gotoTeams();">Cancel</button>
+        <button md-button (click)="submit();" [disabled]="checkCreate()" *ngIf="(page==1)">Create</button>
       </div>
     </div>
   </div>

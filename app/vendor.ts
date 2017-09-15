@@ -15,3 +15,4 @@ import '@angular/http';
 
 // Angular Material Theme
 import '@angular/material/prebuilt-themes/indigo-pink.css';
+import 'material-design-icons';

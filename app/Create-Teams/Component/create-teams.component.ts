@@ -1,6 +1,7 @@
 import {Component , Input, ViewChild, OnInit} from "@angular/core";
 import { NgStyle } from '@angular/common';
 import { FormControl } from "@angular/forms";
+import { Router } from "@angular/router";
 import * as moment from "moment";
 import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
@@ -33,7 +34,7 @@ export class createTeamComponent implements OnInit{
 
   }
 
-  constructor(private http: Http){
+  constructor(private http: Http, private router: Router){
     this.teamMemberCtrl = new FormControl();
     
   }
@@ -50,7 +51,7 @@ export class createTeamComponent implements OnInit{
     .then((response:any)=>{
         try{
           let data = JSON.parse(response._body);
-          alert(data.message);
+          this.router.navigate(["teams"]);
         }  
         catch(e){
           alert("Something Went Wrong!");
@@ -66,6 +67,20 @@ export class createTeamComponent implements OnInit{
     })
   }
 
+  checkCreate(){
+    if(this.teamData && this.teamData.team_members && this.teamData.team_members.length > 0){
+      var managerList = this.teamData.team_members.filter((val:any)=> val.designation == "manager");
+      if(managerList.length > 0){
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    else{
+      return true;
+    }
+  }
 
   ngOnInit(){
     let self = this;
@@ -95,6 +110,15 @@ export class createTeamComponent implements OnInit{
     })
   }
 
+  selectedEmployees(employee: any){
+    if(this.teamData.team_members && this.teamData.team_members.length > 0){
+    var index = this.teamData.team_members.findIndex((value:any) => value && (value._id == employee._id));
+    return index > -1;
+    }
+    else{
+      return false;
+    }
+  }
 
   nextPage(){
     this.page += 1;
@@ -102,6 +126,10 @@ export class createTeamComponent implements OnInit{
 
   prevPage(){
     this.page -= 1;
+  }
+
+  gotoTeams(){
+    this.router.navigate(["teams"]);
   }
 
   selectTeamMember(employee:any){

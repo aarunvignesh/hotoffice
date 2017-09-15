@@ -1,26 +1,25 @@
-<h1>{{teamProfile.name}}</h1>
-<h1>{{teamProfile.description}}</h1>
 
-<div *ngFor="let team_members of teamProfile.team_members">
-  <img src="{{'./users/image/'+ team_members._id}}" width="50" height="50"/>
-  <h4>{{team_members.first_name + ' '+ team_members.last_name}}</h4>
-  <h4>{{team_members.designation}}</h4>
+<div class="main-menu">
+  <a routerLink="/teams" routerLinkActive="active"><i class="material-icons">chevron_left</i> Back to previous page</a>
 </div>
-
-  <!--<div class="row">
-  <div class="col-md-6">-->
-    
-   
-  <!--</div>
-  <div class="col-md-6" style="margin-bottom: 10px">
-    <table class="table table-responsive table-condensed">
-      <tr>
-        <th *ngFor="let label of lineChartLabels">{{label}}</th>
-      </tr>
-      <tr *ngFor="let d of lineChartData">
-        <td *ngFor="let label of lineChartLabels; let j=index">{{d && d.data[j]}}</td>
-      </tr>
-    </table>
-    <button (click)="randomize()">CLICK</button>
+<div class="more-space-bottom">
+  <h2>{{teamProfile.name}}</h2>
+</div>
+<div class="row">
+  <div (click)="selected(user);" *ngFor="let user of teamProfile.team_members" class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+    <div class="card user-card">
+    <figure class="clip-circle">
+      <img src="{{'./users/image/'+ user._id}}" />
+    </figure>
+    <div class="card-details">
+      <h4>{{user.first_name + " " + user.last_name}}</h4>
+      <p class="role">{{user.designation}}</p>
+      <div class="action-icons">
+        <a href="javascript:void(0)" title=""><span class="icon-mail"></span></a>
+        <a href="javascript:void(0)" title=""><span class="icon-slack"></span></a>
+      </div>
+    </div>
+    </div>
   </div>
-</div>-->
+</div>
+<button class="wse-fab-button" md-fab *ngIf="userData && (userData.role == 'admin' || userData.designation == 'manager')" (click)="gotoAddTeam();"><i class="material-icons md-24">add</i></button>

@@ -330,9 +330,7 @@ border:1px solid transparent;
 }
 
 .open {
-transform:translate3d(-15rem,
-0,
-0);
+transform:translate3d(-15rem,0,0);
 }
 
 .menu-button-icon {

@@ -1,6 +1,7 @@
 import {Component , Input, ViewChild, OnInit} from "@angular/core";
 import * as moment from "moment";
 import { Http, Response } from '@angular/http';
+import {loginService} from "./../../Login/Service/login.service";
 import { ActivatedRoute, Params, Router } from "@angular/router";
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';
@@ -10,17 +11,25 @@ import 'rxjs/add/operator/toPromise';
     templateUrl:'./../Views/team.component.html',
     styleUrls:['./../Styles/main.css']
 })
+
 export class teamProfileComponent implements OnInit{
- 	
+  selected(user :any){
+    this.router.navigate(["employee-profile"],{queryParams:{id: user._id}});
+  }
+
  teamData: Array<any> = [];	 
  agileTeam: Array<any> = [];
  functionalTeam: Array<any> = [];
  teamProfile: any = {};
+ userData:any = {};
 
-constructor(private http: Http, private activatedRoute :ActivatedRoute){
-   
+constructor(private http: Http, private activatedRoute :ActivatedRoute, private router: Router, private login: loginService){
+  this.userData = login.getAuthData();
 }
 
+gotoAddTeam(){
+  this.router.navigate(["add-team-members"], { preserveQueryParams: true });
+}
 
 ngOnInit(){
     let self = this;

@@ -11,6 +11,7 @@ export class HeaderComponent implements OnInit{
     userData: any;
     userSubscription:any;
     hideHeader: any;
+    hideRouteForTeams:Boolean = true;
 
     constructor(private login: loginService, private router: Router, private route: ActivatedRoute){
         let self = this;
@@ -28,8 +29,18 @@ export class HeaderComponent implements OnInit{
               if(event.state.url == "/login"){
                 self.hideHeader = false;
               }
+              if(event.state.url == "/teams" || event.state.url == "/employees"){
+                self.hideRouteForTeams = false;
+              }
+              else{
+                self.hideRouteForTeams = true;
+              }
             }
         });
+    }
+
+    gotoProfile(){
+        this.router.navigate(["employee-profile"],{queryParams:{id: this.userData._id}});
     }
 
     logout(){
