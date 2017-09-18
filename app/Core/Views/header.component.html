@@ -29,16 +29,11 @@
 	</div>
 </div>
 
-
 <!-- user menu -->
-<md-menu #menu="mdMenu" class="top-space">
+<md-menu #menu="mdMenu" xPosition="before">
 	<button md-menu-item (click)="gotoProfile();">
 		<md-icon>person</md-icon>
 		<span>My Profile</span>
-	</button>
-	<button md-menu-item disabled>
-		<md-icon>settings</md-icon>
-		<span>Other Settings</span>
 	</button>
 	<button md-menu-item (click)="logout();">
 		<md-icon>exit_to_app</md-icon>

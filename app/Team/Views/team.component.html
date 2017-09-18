@@ -2,7 +2,14 @@
 <div class="row">
   <div class="col-lg-4" (click)="selected(team)" *ngFor="let team of teamData">
     <div class="card team-card">
-      <h3>{{team.name}}</h3>
+      <div>
+        <div fxFlex="80">
+          <h3>{{team.name}}</h3>
+        </div>
+        <div  fxFlex="20" fxLayout="row" fxLayoutAlign="end center" (click)="$event.stopPropagation()">
+          <a href="javascript:void(0)" title=""><i [mdMenuTriggerFor]="menu" class="material-icons md-24">more_vert</i></a>
+        </div>
+      </div>
       <div class="team-description">
         <p>{{team.description}}</p>
       </div>
@@ -15,7 +22,19 @@
         </figure>
       </div>
     </div>
+    <md-menu #menu="mdMenu" xPosition="before">
+        <button md-menu-item (click)="gotoEditTeams(team)">
+          <md-icon>edit</md-icon>
+          <span>Edit Details</span>
+        </button>
+        <button md-menu-item>
+          <md-icon>delete</md-icon>
+          <span>Delete</span>
+        </button>
+      </md-menu>
   </div>
 </div>
 <div>
 <button class="wse-fab-button" md-fab *ngIf="userData && userData.role == 'admin'" (click)="createTeams();"><i class="material-icons md-24">add</i></button>
+
+<!-- user menu -->

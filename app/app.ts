@@ -8,6 +8,8 @@ import { HttpModule } from '@angular/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {ImageCropperComponent} from 'ng2-img-cropper';
 
+
+
 import { employeesComponentProfile } from './Employee-Profile/Component/employees.component';
 import { teamProfileComponent } from './Team-Profile/Component/team.component';
 

@@ -141,7 +141,9 @@ img {
     text-overflow: ellipsis;
 }
 .team-avatars {
-display: flex;
+max-width:200px;
+height: 32px;
+overflow: hidden;
 }
 .team-card:hover {
     box-shadow: 0 8px 8px 0 rgba(0,0,0,.14);
@@ -199,13 +201,9 @@ li {
     bottom: 2.5rem;
     right: 2.5rem;
     background-color: #f12c3e !important;
-    /* z-index: 1;
-    width: 56px;
-    height: 56px;
-    color: #fff;
-    border-color: transparent;
-    border-radius: 50%;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.075); */
+}
+.wse-fab-button.second {
+    bottom: 7rem;
 }
 
 
@@ -253,10 +251,12 @@ span.text-small+p {
     display: inline-flex;
     padding: 7px 7px;
     align-items: center;
-    color: #5a5a5a;
+    color: #1a1a1a;
+    border-bottom: 2px solid transparent;
 }
 .main-menu a.active {
-    color: #1a1a1a;
+    color: #000000;
+    border-bottom-color: #f12c3e;
 }
 .main-menu ul {
     display: flex;
@@ -309,6 +309,9 @@ span.text-small+p {
     width: 32px;
     height: 32px;
     border-radius: 50%;
+}
+.space {
+padding: 1rem;
 }
 .space-top-bottom {
 padding: 1rem 0;

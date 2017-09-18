@@ -1,7 +1,7 @@
 import {Component , Input, ViewChild, OnInit} from "@angular/core";
 import { NgStyle } from '@angular/common';
 import { FormControl } from "@angular/forms";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 import * as moment from "moment";
 import { Http, Response } from '@angular/http';
 import {Observable} from 'rxjs/Observable';
@@ -34,9 +34,8 @@ export class createTeamComponent implements OnInit{
 
   }
 
-  constructor(private http: Http, private router: Router){
+  constructor(private http: Http, private router: Router, private activatedRoute: ActivatedRoute){
     this.teamMemberCtrl = new FormControl();
-    
   }
 
   filterEmployees(employee: any){
@@ -84,6 +83,7 @@ export class createTeamComponent implements OnInit{
 
   ngOnInit(){
     let self = this;
+    let teamId = this.activatedRoute.snapshot.queryParams["id"];
     this.http.get("/users/data")
     .toPromise()
     .then((response:any)=>{
@@ -107,7 +107,25 @@ export class createTeamComponent implements OnInit{
         }
     },()=>{
       self.userData = [];
-    })
+    });
+    console.log(teamId);
+    if(teamId){
+      this.http.get("/team/"+ teamId)
+      .toPromise()
+      .then((response:any)=>{
+        console.log(response);
+          try{
+            let data = JSON.parse(response._body);
+            self.teamData = data;
+          }  
+          catch(e){
+            self.teamData = [];
+          }
+      },(response)=>{
+        console.log(response);
+        self.teamData = [];
+      });
+    }
   }
 
   selectedEmployees(employee: any){

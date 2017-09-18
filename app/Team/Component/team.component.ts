@@ -28,6 +28,10 @@ export class teamComponent implements OnInit{
     this.router.navigate(["create-teams"]);
   }
 
+  gotoEditTeams(team:any){
+    this.router.navigate(["create-teams"],{queryParams:{id:team._id}});
+  }
+
 ngOnInit(){
     let self = this;
     this.http.get("/teams/data")
